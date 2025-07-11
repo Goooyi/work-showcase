@@ -423,6 +423,20 @@ const TrialShowcase = () => {
     }
   };
 
+  const resetData = () => {
+    if (
+      confirm(
+        "Are you sure you want to reset all data? This will clear all your customizations.",
+      )
+    ) {
+      localStorage.removeItem("trialShowcaseSections");
+      localStorage.removeItem("sidebarCollapsed");
+      setSectionsData(initialSectionsData);
+      setIsSidebarCollapsed(false);
+      setActiveSection(0);
+    }
+  };
+
   const getLayoutClass = (cardCount: number) => {
     switch (cardCount) {
       case 0:
@@ -713,13 +727,22 @@ const TrialShowcase = () => {
                   {currentSection.content.length} items
                 </p>
               </div>
-              <button
-                onClick={() => addNewCard(currentSection.id)}
-                className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl"
-              >
-                <Plus className="w-5 h-5" />
-                Add Card
-              </button>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => addNewCard(currentSection.id)}
+                  className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl"
+                >
+                  <Plus className="w-5 h-5" />
+                  Add Card
+                </button>
+                <button
+                  onClick={resetData}
+                  className="bg-red-600 text-white px-6 py-3 rounded-xl hover:bg-red-700 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl"
+                >
+                  <X className="w-5 h-5" />
+                  Reset Data
+                </button>
+              </div>
             </div>
 
             {/* Cards Grid */}
