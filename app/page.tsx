@@ -136,7 +136,7 @@ const TrialShowcase = () => {
       content: [
         {
           id: 1,
-          title: "你好，我叫高奕 👋",
+          title: "👋",
           description:
             "LLM算法工程师，相信实现AI原生需要持续的工程迭代，每天都在被新的AI技术鼓舞（RAG->ARAG,Prompt->Context,Inference-Time scaling,A2A...）,和所有人一起探索如何发挥AI的所有潜能。",
           image: "👨‍💻",
@@ -144,17 +144,17 @@ const TrialShowcase = () => {
         },
         {
           id: 2,
-          title: "我的工程能力",
+          title: "学历",
           description:
-            "• API Development\n• Frontend Development \n• Machine Learning\n• System Architecture",
+            "柏林工大本硕-计算机工程。\n 论文：\n 1. HabitatDyn Dataset \n 2. Odometry-Less Indoor Dynamic Object Detection and Localization .",
           image: "⚡",
-          tags: ["FastAPI", "LLM", "Haystack", "React"],
+          tags: ["CV", "LLM", "PyTorch", "LiteLLM"],
         },
         {
           id: 3,
-          title: "专业领域",
+          title: "工作经历",
           description:
-            "Prompt Engineering, LLM Evaluation, and Production AI Systems",
+            "1. Bosch-亚太中央研究院-检测算法工程师实习生\n 2. Axera爱芯-车载算法工程师 \n Prompt Engineering, LLM Evaluation, and Production AI Systems",
           image: "🎯",
           skills: ["Prompt Design", "Evaluation", "RAG Systems"],
         },
@@ -162,11 +162,11 @@ const TrialShowcase = () => {
     },
     {
       id: 1,
-      title: "试用期项目亮点",
+      title: "试用期项目",
       content: [
         {
           id: 4,
-          title: "LLM评测-对话分轮",
+          title: "意图识别优化",
           description:
             "使用NLP算法为云音乐APP的LLM日志实现了一套对话分轮的算法，使其他评测与归因的算法得以基于真实轮次，提升统计的准确性。主要技术挑战为在无历史记录的状态下识别用户换轮对话。",
           image: "🤖",
@@ -175,7 +175,7 @@ const TrialShowcase = () => {
         },
         {
           id: 5,
-          title: "Agent - Ragflow / Dify 智能体搭建",
+          title: "新场景开发",
           description:
             "使用Ragflow为团队搭建了技术文档、内部wiki、Prompt管理的知识引擎。目前正在通过调研Dify，实现团队的workflow LLM应用，期望可以同时为算法与业务测试提供接口",
           image: "🔄",
@@ -201,7 +201,7 @@ const TrialShowcase = () => {
           id: 7,
           title: "Prompt优化策略",
           description:
-            "学习并实践了各种prompt engineering技术：包括2-shot examples, role-playing, constraint setting, output formatting等。深入理解了不同LLM对prompt的敏感度差异。",
+            "学习并实践了各种prompt engineering技术：包括2-shot examples, role-playing, constraint setting, output formatting等。深入理解了不同LLM对prompt的敏感度差异。\n Promptinging is Fragil when the context got too long",
           image: "💡",
           tags: ["Prompt Engineering", "LLM Optimization"],
           type: "Learning & Development",
@@ -210,7 +210,7 @@ const TrialShowcase = () => {
           id: 8,
           title: "场景拓展：生成",
           description:
-            "完成了全场景Prompt配置，并实现了可配置、可回归、可复用的架构。重点优化了生成场景的prompt，探索了few-shot learning在音乐推荐场景的应用。",
+            "完成了全场景Prompt配置，并实现了可配置、可回归、可复用的架构。重点优化了生成场景的prompt，探索了few-shot learning在音乐推荐场景的应用。\n1. context org kind help 2. duplicated prompt increase when the context got long 3. carefully desgined example boosting significantly 4. a slightest ambiguity can lead to unexpected results",
           image: "🎨",
           metrics: "覆盖15+场景",
           type: "Feature Development",
@@ -229,6 +229,24 @@ const TrialShowcase = () => {
           title: "行业调研与视野拓展",
           description:
             "深入调研了OpenAI、Anthropic、Google的最新LLM进展，学习了RAG、Agent、Fine-tuning等技术方向。参与了多个AI技术分享会，保持技术视野的前沿性。",
+          image: "🌐",
+          skills: ["Market Analysis", "User Research", "Data Analysis"],
+          type: "Strategic Thinking",
+        },
+        {
+          id: 11,
+          title: "协作",
+          description:
+            "1. expect the unexpected: 算法开发的工作输出不再是是与否，而是百分比，与其他同学需要明确这点 2. backwards compatibility: 确保新算法与旧算法兼容，减少对现有系统的冲击",
+          image: "🌐",
+          skills: ["Market Analysis", "User Research", "Data Analysis"],
+          type: "Strategic Thinking",
+        },
+        {
+          id: 12,
+          title: "工作方式",
+          description:
+            "1. 由于LLM的输出不是是与否，而是概率黑盒，持续的迭代和优化，做corner-case和模型能力的中间人",
           image: "🌐",
           skills: ["Market Analysis", "User Research", "Data Analysis"],
           type: "Strategic Thinking",
