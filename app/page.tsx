@@ -15,7 +15,6 @@ import {
   Award,
   BookOpen,
   Lightbulb,
-  Menu,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -64,7 +63,6 @@ const TrialShowcase = () => {
     (Card & { sectionId: number }) | null
   >(null);
   const [editForm, setEditForm] = useState<Partial<Card>>({});
-  const [isMounted, setIsMounted] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("sidebarCollapsed");
@@ -77,7 +75,6 @@ const TrialShowcase = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    setIsMounted(true);
 
     const checkMobile = () => {
       const isMobileView = window.innerWidth < 1024;
@@ -431,7 +428,7 @@ const TrialShowcase = () => {
     isHero?: boolean;
     index: number;
     totalCards: number;
-  }> = ({ card, sectionId, isHero = false, index, totalCards }) => {
+  }> = ({ card, sectionId, isHero = false, totalCards }) => {
     const {
       attributes,
       listeners,
