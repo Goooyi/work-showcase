@@ -139,14 +139,14 @@ const TrialShowcase = () => {
           title: "👋",
           description:
             "LLM算法工程师，相信实现AI原生需要持续的工程迭代，每天都在被新的AI技术鼓舞（RAG->ARAG,Prompt->Context,Inference-Time scaling,A2A...）,和所有人一起探索如何发挥AI的所有潜能。",
-          image: "👨‍💻",
+          image: "👨‍💻关于我",
           type: "个人介绍",
         },
         {
           id: 2,
           title: "学历",
           description:
-            "柏林工大本硕-计算机工程。\n 论文：\n 1. HabitatDyn Dataset \n 2. Odometry-Less Indoor Dynamic Object Detection and Localization .",
+            "柏林工大本硕-计算机工程。\n 论文：\n 1. HabitatDyn Dataset \n 2. Odometry-Less Indoor Dynamic Object Detection and Localization.",
           image: "⚡",
           tags: ["CV", "LLM", "PyTorch", "LiteLLM"],
         },
@@ -167,26 +167,36 @@ const TrialShowcase = () => {
         {
           id: 4,
           title: "意图识别优化",
-          description:
-            "使用NLP算法为云音乐APP的LLM日志实现了一套对话分轮的算法，使其他评测与归因的算法得以基于真实轮次，提升统计的准确性。主要技术挑战为在无历史记录的状态下识别用户换轮对话。",
+          description: `优化意图识别，对意图识别模块做了在180个样本上做了回归与调优：
+          Good:
+            1. 通过标注180个样本，了解了公司intent-based的Workflow，意图的分类
+            2. 对意图做了小范围的优化，尝试了不同的结构、不同的模型、不同的参数的影响，180个样本回归61% -> 63%
+            3. 发现了一些潜在的问题例如意图字面意思的影响*
+          Bad:
+            1. 没有从根本上尝试大的修改是否可以突破意图识别的瓶颈做大的优化
+            2. 发现意图名称有轻微限制性能但是没有提出解决办法
+            3. 意图结构化输出可能加长了意图识别的推理时间`,
           image: "🤖",
-          metrics: "意图准确率 +8% 实体准确率 +2%",
+          metrics: "Easycase准确率 +8% Hardcase准确率 +2%*",
           type: "Evaluation Framework",
         },
         {
           id: 5,
-          title: "新场景开发",
-          description:
-            "使用Ragflow为团队搭建了技术文档、内部wiki、Prompt管理的知识引擎。目前正在通过调研Dify，实现团队的workflow LLM应用，期望可以同时为算法与业务测试提供接口",
+          title: "询问优化+新场景开发",
+          description: `询问实体属性的结构化调整（route子意图），价格1。0，价格2.0，活动模块优化整理
+          Good:
+            1. 询问+活动+价格场景下，大模型推理过程归因更明确
+          Bad:
+            1. 新场景尤其价格2.0受模型不稳定影响，进度比较慢影响了其他项目（意图优化，模版化）的开发`,
           image: "🔄",
-          timeline: "30 days delivered",
+          timeline: "一周+2天完成上线",
           type: "Infrastructure",
         },
         {
           id: 6,
           title: "详情页解析",
           description:
-            "首先实现了对小红书分享内容的爬取，豆瓣电影详情页解析等一系列，站外链接内容引入站内对话系统的详情页解析能力。对于分享场景而言，有效降低用户描述成本、精准获取歌曲",
+            "作为进入公司的首个项目，在公司AI能力中台的VL模型模型做了几种测试，最终选型豆包的VLM支持线上商品详情页的解析。",
           image: "📊",
           priority: "High",
           type: "Automation Pipeline",
