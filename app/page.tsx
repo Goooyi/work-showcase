@@ -19,6 +19,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import styles from "./styles/bento.module.css";
+import { STORAGE_KEYS, DATA_VERSION, initializeAppData } from "./config";
 import {
   DndContext,
   closestCenter,
@@ -65,7 +66,7 @@ const TrialShowcase = () => {
   const [editForm, setEditForm] = useState<Partial<Card>>({});
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("sidebarCollapsed");
+      const saved = localStorage.getItem(STORAGE_KEYS.SIDEBAR);
       return saved ? JSON.parse(saved) : false;
     }
     return false;
@@ -86,7 +87,7 @@ const TrialShowcase = () => {
           setIsSidebarCollapsed(true);
         } else {
           // Restore from localStorage or default to open on desktop
-          const saved = localStorage.getItem("sidebarCollapsed");
+          const saved = localStorage.getItem(STORAGE_KEYS.SIDEBAR);
           setIsSidebarCollapsed(saved ? JSON.parse(saved) : false);
         }
       }
@@ -101,7 +102,7 @@ const TrialShowcase = () => {
   useEffect(() => {
     if (typeof window !== "undefined" && !isMobile) {
       localStorage.setItem(
-        "sidebarCollapsed",
+        STORAGE_KEYS.SIDEBAR,
         JSON.stringify(isSidebarCollapsed),
       );
     }
@@ -118,7 +119,14 @@ const TrialShowcase = () => {
     if (typeof window === "undefined") {
       return null;
     }
-    const saved = localStorage.getItem("trialShowcaseSections");
+
+    // Check for new deployment or version change
+    const dataWasCleared = initializeAppData();
+    if (dataWasCleared) {
+      return null; // Use initial data
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEYS.SECTIONS);
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -333,10 +341,7 @@ const TrialShowcase = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem(
-        "trialShowcaseSections",
-        JSON.stringify(sectionsData),
-      );
+      localStorage.setItem(STORAGE_KEYS.SECTIONS, JSON.stringify(sectionsData));
     }
   }, [sectionsData]);
 
@@ -439,8 +444,10 @@ const TrialShowcase = () => {
         "Are you sure you want to reset all data? This will clear all your customizations.",
       )
     ) {
-      localStorage.removeItem("trialShowcaseSections");
-      localStorage.removeItem("sidebarCollapsed");
+      Object.values(STORAGE_KEYS).forEach((key) => {
+        localStorage.removeItem(key);
+      });
+      initializeAppData(); // Re-initialize with current version
       setSectionsData(initialSectionsData);
       setIsSidebarCollapsed(false);
       setActiveSection(0);
