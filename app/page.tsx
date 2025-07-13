@@ -147,12 +147,15 @@ const TrialShowcase = () => {
           title: "👋",
           description: `LLM算法工程师
             - 相信实现AI原生需要持续的工程迭代
-            - 做到Agent需要1. Eval-Driven 2. Data-Driven
+
+            - Agent需要1. Eval-Driven 2. Data-Driven
+
             - 学习最新的AI技术
               - RAG->ARAG
               - Prompt->Context
               - Inference-Time scaling
               - A2A...
+
             - 和所有人一起探索如何发挥AI的所有潜能。`,
           image: "👨‍💻关于我",
           type: "个人介绍",
@@ -161,7 +164,7 @@ const TrialShowcase = () => {
           id: 2,
           title: "学历",
           description:
-            "柏林工大本科-电器工程\n 柏林工业大学硕士-计算机工程\n 论文：\n 1. HabitatDyn Dataset \n 2. Odometry-Less Indoor Dynamic Object Detection and Localization.",
+            "柏林工大本科-电器工程\n 柏林工业大学硕士-计算机工程\n \n论文：\n\n 1. HabitatDyn Dataset \n\n 2. Odometry-Less Indoor Dynamic Object Detection and Localization.",
           image: "⚡",
           tags: ["CV", "LLM", "PyTorch", "LiteLLM"],
         },
@@ -196,10 +199,13 @@ const TrialShowcase = () => {
           title: "意图识别优化",
           description: `优化意图识别，对意图识别模块做了在180个样本上做了回归与调优：
           Good:
+
             1. 通过标注180个样本，了解了公司intent-based的Workflow，意图的分类
             2. 对意图做了小范围的优化，尝试了不同的结构、不同的模型、不同的参数的影响，180个样本回归61% -> 63%
             3. 发现了一些潜在的问题例如意图字面意思的影响*
+
           Bad:
+
             1. 没有从根本上尝试大的修改是否可以突破意图识别的瓶颈做大的优化
             2. 发现意图名称有轻微限制性能但是没有提出解决办法
             3. 意图结构化输出可能加长了意图识别的推理时间`,
