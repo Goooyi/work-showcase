@@ -1,9 +1,10 @@
 // Build configuration and deployment detection
-export const BUILD_ID = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
-                        process.env.NEXT_PUBLIC_BUILD_ID ||
-                        Date.now().toString();
+export const BUILD_ID =
+  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
+  process.env.NEXT_PUBLIC_BUILD_ID ||
+  Date.now().toString();
 
-export const DATA_VERSION = "1.0.1";
+export const DATA_VERSION = "1.0.2";
 
 // Storage keys
 export const STORAGE_KEYS = {
@@ -25,7 +26,7 @@ export const isNewDeployment = (): boolean => {
 export const clearAppData = (): void => {
   if (typeof window === "undefined") return;
 
-  Object.values(STORAGE_KEYS).forEach(key => {
+  Object.values(STORAGE_KEYS).forEach((key) => {
     localStorage.removeItem(key);
   });
 };
