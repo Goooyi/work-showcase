@@ -19,7 +19,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import styles from "./styles/bento.module.css";
-import { STORAGE_KEYS, DATA_VERSION, initializeAppData } from "./config";
+import { STORAGE_KEYS, initializeAppData } from "./config";
 import {
   DndContext,
   closestCenter,
