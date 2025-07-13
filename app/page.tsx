@@ -145,8 +145,15 @@ const TrialShowcase = () => {
         {
           id: 1,
           title: "👋",
-          description:
-            "LLM算法工程师，相信实现AI原生需要持续的工程迭代，每天都在被新的AI技术鼓舞（RAG->ARAG,Prompt->Context,Inference-Time scaling,A2A...）,和所有人一起探索如何发挥AI的所有潜能。",
+          description: `LLM算法工程师
+            - 相信实现AI原生需要持续的工程迭代
+            - 做到Agent需要1. Eval-Driven 2. Data-Driven
+            - 学习最新的AI技术
+              - RAG->ARAG
+              - Prompt->Context
+              - Inference-Time scaling
+              - A2A...
+            - 和所有人一起探索如何发挥AI的所有潜能。`,
           image: "👨‍💻关于我",
           type: "个人介绍",
         },
@@ -154,17 +161,29 @@ const TrialShowcase = () => {
           id: 2,
           title: "学历",
           description:
-            "柏林工大本硕-计算机工程。\n 论文：\n 1. HabitatDyn Dataset \n 2. Odometry-Less Indoor Dynamic Object Detection and Localization.",
+            "柏林工大本科-电器工程\n 柏林工业大学硕士-计算机工程\n 论文：\n 1. HabitatDyn Dataset \n 2. Odometry-Less Indoor Dynamic Object Detection and Localization.",
           image: "⚡",
           tags: ["CV", "LLM", "PyTorch", "LiteLLM"],
         },
         {
           id: 3,
           title: "工作经历",
-          description:
-            "1. Bosch-亚太中央研究院-检测算法工程师实习生\n 2. Axera爱芯-车载算法工程师 \n Prompt Engineering, LLM Evaluation, and Production AI Systems",
+          description: `1. Bosch-亚太中央研究院-检测算法工程师实习生
+              - Bosch洗衣机检测模型：Anomaly detection with UNet and Detection with Mask R-CNN
+              - Bosch配重块虚拟数据synthetic dataset生成（Blender + Blenderproc）
+              2. Axera爱芯-车载算法工程师
+                - 检测算法开发与调研（DETR,YOLO）
+                - 驾驶虚拟数据生成（Simulation/ComfyUI）
+                - 地面标识检测算法（DETR）
+                - 地面标识虚拟数据Augmentation
+                - 红绿灯检测（YOLOX）`,
           image: "🎯",
-          skills: ["Prompt Design", "Evaluation", "RAG Systems"],
+          skills: [
+            "CV Detection",
+            "In door simulation",
+            "RAG",
+            "Prompt Engineering",
+          ],
         },
       ],
     },
@@ -185,20 +204,20 @@ const TrialShowcase = () => {
             2. 发现意图名称有轻微限制性能但是没有提出解决办法
             3. 意图结构化输出可能加长了意图识别的推理时间`,
           image: "🤖",
-          metrics: "Easycase准确率 +8% Hardcase准确率 +2%*",
+          metrics: "正确样本准确率 +8% Hardcase准确率 +2%*",
           type: "Evaluation Framework",
         },
         {
           id: 5,
           title: "询问优化+新场景开发",
-          description: `询问实体属性的结构化调整（route子意图），价格1。0，价格2.0，活动模块优化整理
+          description: `问实体属性的结构化调整（route子意图），价格1。0，价格2.0，活动模块优化整理
           Good:
             1. 询问+活动+价格场景下，大模型推理过程归因更明确
           Bad:
             1. 新场景尤其价格2.0受模型不稳定影响，进度比较慢影响了其他项目（意图优化，模版化）的开发`,
           image: "🔄",
           timeline: "一周+2天完成上线",
-          type: "Infrastructure",
+          type: "场景研发",
         },
         {
           id: 6,
@@ -207,7 +226,7 @@ const TrialShowcase = () => {
             "作为进入公司的首个项目，在公司AI能力中台的VL模型模型做了几种测试，最终选型豆包的VLM支持线上商品详情页的解析。",
           image: "📊",
           priority: "High",
-          type: "Automation Pipeline",
+          type: "能力开发",
         },
       ],
     },
@@ -218,26 +237,37 @@ const TrialShowcase = () => {
         {
           id: 7,
           title: "Prompt优化策略",
-          description:
-            "学习并实践了各种prompt engineering技术：包括2-shot examples, role-playing, constraint setting, output formatting等。深入理解了不同LLM对prompt的敏感度差异。\n Promptinging is Fragil when the context got too long",
+          description: `学习并实践了各种prompt engineering技术：包括
+            - examples is key for every LLM, 2-shot examples
+            - COT,COD
+            - Reasoning, Inference time scaling等。
+            深入理解了LLM对prompt的敏感度差异。例如：
+            - Prompt开发是开放性问题，永远会有新的corner-case出现需要去覆盖，并且当一个hard-case出现时，解决并不是简单修改几个提示词可以了，需要多次测试定位是否有冲突的定义。
+            - 举例和输出推理是两个最直接有效的prompt优化策略
+            - 实现eval-driven, 才可以在不同LLM/不同参数之间快速迁移
+            - Prompt太长时（e.g. ~20 sku info），性能会出现下降，对原有能力造成干扰例如活动类型的判断一错再错，context engineer变得极其重要
+            - 要持续维护/删减最细微的冲突定义
+            - 重复某条规则是有用的`,
           image: "💡",
           tags: ["Prompt Engineering", "LLM Optimization"],
           type: "Learning & Development",
         },
         {
           id: 8,
-          title: "场景拓展：生成",
+          title: "新场景开发：",
           description:
-            "完成了全场景Prompt配置，并实现了可配置、可回归、可复用的架构。重点优化了生成场景的prompt，探索了few-shot learning在音乐推荐场景的应用。\n1. context org kind help 2. duplicated prompt increase when the context got long 3. carefully desgined example boosting significantly 4. a slightest ambiguity can lead to unexpected results",
+            "新场景其实是：产品->算法->模型的信息流，第一步需要从“产品->算法”时提炼出适用于LLM逻辑的信息，第二步“算法->模型”需要不断的攻击性测试（运营同学的测试）来1. 开盒LLM是否真正理解当前changing认为2.补充corner-case和举例的过程。同时需要和产品同学同步这个工作并非是与否的问题”，而是百分比问题",
           image: "🎨",
-          metrics: "覆盖15+场景",
+          metrics: "覆盖3+场景",
           type: "Feature Development",
         },
         {
           id: 9,
-          title: "Eval对话case还原",
-          description:
-            "建立了完整的对话日志采集、清洗、标注、评测的pipeline。实现了基于真实用户对话的自动化测试框架，支持新版本上线前的回归测试。",
+          title: "以意图识别为例，初步尝试Eval大批量回归",
+          description: `1. 标注、清晰了180个样本。二次标注仍然是耗时的工作。
+            2. 以dspy架构尝试了简单的批量测试（Intent top one EM），可以快速尝试不同LLM，不同参数。
+            3. 尝试了DSPy的自动优化：example搜索，意识到某个认为的定义需要/可以具体的example快速解决（例如推荐追问定义）
+            4. 需要继续尝试新的自动化优化`,
           image: "🔍",
           skills: ["Data Pipeline", "Testing Framework", "Quality Assurance"],
           type: "Quality Engineering",
@@ -246,7 +276,7 @@ const TrialShowcase = () => {
           id: 10,
           title: "行业调研与视野拓展",
           description:
-            "深入调研了OpenAI、Anthropic、Google的最新LLM进展，学习了RAG、Agent、Fine-tuning等技术方向。参与了多个AI技术分享会，保持技术视野的前沿性。",
+            "深入调研了Ali、OpenAI、Anthropic、Google的最新LLM进展，持续跟进RAG、Agent、Fine-tuning等技术方向。保持技术视野的前沿性。",
           image: "🌐",
           skills: ["Market Analysis", "User Research", "Data Analysis"],
           type: "Strategic Thinking",
@@ -255,9 +285,9 @@ const TrialShowcase = () => {
           id: 11,
           title: "协作",
           description:
-            "1. expect the unexpected: 算法开发的工作输出不再是是与否，而是百分比，与其他同学需要明确这点 2. backwards compatibility: 确保新算法与旧算法兼容，减少对现有系统的冲击",
+            "1. expect the unexpected: 算法开发的工作输出不再是是与否，而是百分比，与其他同学需要明确这点 \n 2. backwards compatibility: 确保新算法与旧算法兼容，减少对现有系统的冲击",
           image: "🌐",
-          skills: ["Market Analysis", "User Research", "Data Analysis"],
+          skills: ["Market Analysis", "Algo Research", "Model Research"],
           type: "Strategic Thinking",
         },
         {
@@ -266,7 +296,7 @@ const TrialShowcase = () => {
           description:
             "1. 由于LLM的输出不是是与否，而是概率黑盒，持续的迭代和优化，做corner-case和模型能力的中间人",
           image: "🌐",
-          skills: ["Market Analysis", "User Research", "Data Analysis"],
+          skills: ["Natural Language Analysis"],
           type: "Strategic Thinking",
         },
       ],
@@ -279,9 +309,9 @@ const TrialShowcase = () => {
           id: 11,
           title: "Eval驱动的算法开发: 评估器",
           description:
-            "1. Eval定义与回归，保证新的版本不会导致旧的覆盖场景失败 \n2. 单模块/单场景可直接指标化评估 \n 3. Emphasize on ground factual recall on both prompts and chat history",
+            "1. Eval定义与回归，保证新的版本不会导致旧的覆盖场景失败 \n2. 单模块/单场景可直接指标化评估 \n 3. Emphasize on ground factual recall on both prompts and chat history \n 4. LLM-as-a-judge: AI评估器",
           image: "🚀",
-          timeline: "Next 3 months",
+          timeline: "Next months",
           priority: "High",
           type: "Project Leadership",
         },
@@ -289,29 +319,27 @@ const TrialShowcase = () => {
           id: 12,
           title: "可迁移的Prompt架构: DSPy",
           description:
-            "1. 结构化Prompt,兼容线上与算法开发 2.提升Prompt模版在不同LLM之间的可迁移性 3. Auto-prompting: 以数据归因的提示词自动优化 4. structured Outputs",
+            "1. 结构化Prompt,兼容线上与算法开发 \n 2.提升Prompt模版在不同LLM之间的可迁移性 \n 3. Auto-prompting: 以数据归因的提示词自动优化 \n 4. structured Outputs",
           image: "🧠",
-          timeline: "6 months",
+          timeline: "3 months",
           priority: "Medium",
           type: "Technical Development",
         },
         {
           id: 13,
           title: "场景持续迭代",
-          description:
-            "Mentor new team members and build high-performing engineering culture.",
+          description: "Case2Case的持续解决问题",
           image: "🌟",
           timeline: "Ongoing",
           priority: "High",
-          type: "People Development",
+          type: "Development",
         },
         {
           id: 14,
           title: "模拟对话-用户模拟",
-          description:
-            "Contributing back to open source community with internal tools.",
+          description: "Red teaming, Dialogue Simulation, injection Test",
           image: "💡",
-          timeline: "Ongoing",
+          timeline: "6 months",
           priority: "Medium",
           type: "Community",
         },
@@ -319,7 +347,7 @@ const TrialShowcase = () => {
           id: 15,
           title: "Future",
           description:
-            "1. Red Teaming for testing/synthetic Data \n 2. CAI-ICAL for synthetic Data \n 3. Human-in-the-loop与prompt优化的闭环实现自动优化\n 4. chat history memory management 5. tool use, info retrieval, and data augmentation",
+            "1. Red Teaming for testing/synthetic Data \n 2. CAI-ICAL for synthetic Data \n 3. Human-in-the-loop与prompt优化的闭环实现自动优化\n 4. chat history memory management \n 5. tool use, info retrieval, and data augmentation",
           image: "🏗️",
           timeline: "12 months",
           priority: "High",
