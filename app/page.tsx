@@ -17,6 +17,7 @@ import {
   Lightbulb,
   ChevronLeft,
   ChevronRight,
+  GripVertical,
 } from "lucide-react";
 import styles from "./styles/bento.module.css";
 import { STORAGE_KEYS, initializeAppData } from "./config";
@@ -531,8 +532,6 @@ const TrialShowcase = () => {
         ref={setNodeRef}
         style={style}
         className={`card-wrapper h-full ${isDragging ? "opacity-50" : ""}`}
-        {...attributes}
-        {...listeners}
       >
         <div
           className={`
@@ -541,12 +540,22 @@ const TrialShowcase = () => {
             border border-gray-100 hover:border-gray-200
             flex flex-col overflow-hidden
             ${isHero ? "hero-card" : ""}
-            ${totalCards > 4 ? "min-h-[320px]" : ""}
+            ${totalCards > 4 ? "min-h-[280px] sm:min-h-[320px]" : ""}
           `}
         >
+          {/* Drag Handle */}
+          <div
+            className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 cursor-move p-2 hover:bg-gray-200 hover:scale-110 rounded-lg z-10"
+            {...attributes}
+            {...listeners}
+            title="Drag to reorder"
+          >
+            <GripVertical className="w-5 h-5 text-gray-400 hover:text-gray-600" />
+          </div>
+
           <button
             onClick={() => openEditModal(card, sectionId)}
-            className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 hover:bg-white/20 rounded-lg"
+            className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 hover:bg-gray-100 rounded-lg"
           >
             <Edit3 className="w-4 h-4" />
           </button>
@@ -647,7 +656,7 @@ const TrialShowcase = () => {
 
       <div
         className={`
-        relative z-10 flex h-screen p-4 gap-4
+        relative z-10 flex h-screen ${isMobile ? "p-2" : "p-4"} ${isMobile ? "gap-2" : "gap-4"}
         transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}
       `}
       >
@@ -679,7 +688,7 @@ const TrialShowcase = () => {
           </button>
 
           <div
-            className={`p-8 flex flex-col h-full ${isSidebarCollapsed && !isMobile ? "p-4" : ""}`}
+            className={`${isMobile ? "p-4" : "p-8"} flex flex-col h-full ${isSidebarCollapsed && !isMobile ? "p-4" : ""}`}
           >
             {/* Header */}
             <div
@@ -767,31 +776,33 @@ const TrialShowcase = () => {
 
         {/* Main Content Area */}
         <div className="flex-1 bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="p-8 h-full flex flex-col">
+          <div className="p-4 sm:p-8 h-full flex flex-col">
             {/* Content Header */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
                   {currentSection.title}
                 </h2>
-                <p className="text-gray-600 mt-1">
+                <p className="text-gray-600 mt-1 text-sm sm:text-base">
                   {currentSection.content.length} items
                 </p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-2 flex-wrap">
                 <button
                   onClick={() => addNewCard(currentSection.id)}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm shadow-md hover:shadow-lg"
                 >
-                  <Plus className="w-5 h-5" />
-                  Add Card
+                  <Plus className="w-4 h-4" />
+                  <span className="hidden sm:inline">Add Card</span>
+                  <span className="sm:hidden">Add</span>
                 </button>
                 <button
                   onClick={resetData}
-                  className="bg-red-600 text-white px-6 py-3 rounded-xl hover:bg-red-700 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2 text-sm shadow-md hover:shadow-lg"
                 >
-                  <X className="w-5 h-5" />
-                  Reset Data
+                  <X className="w-4 h-4" />
+                  <span className="hidden sm:inline">Reset Data</span>
+                  <span className="sm:hidden">Reset</span>
                 </button>
               </div>
             </div>

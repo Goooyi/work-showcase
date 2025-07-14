@@ -213,3 +213,52 @@
         grid-template-columns 0.3s ease-out,
         grid-template-rows 0.3s ease-out;
 }
+
+/* Drag handle styles */
+.dragHandle {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: move;
+    transition: all 0.2s ease-out;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 10;
+}
+
+.dragHandle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile drag handle visibility */
+@media (max-width: 640px) {
+    .dragHandle {
+        opacity: 0.4;
+    }
+
+    .cardWrapper:hover .dragHandle {
+        opacity: 0.7;
+    }
+}
+
+/* Desktop drag handle visibility */
+@media (min-width: 641px) {
+    .dragHandle {
+        opacity: 0;
+    }
+
+    .cardWrapper:hover .dragHandle {
+        opacity: 1;
+    }
+}
+
+/* Touch-friendly sizing for mobile */
+@media (pointer: coarse) {
+    .dragHandle {
+        padding: 0.75rem;
+        opacity: 0.5;
+    }
+}
