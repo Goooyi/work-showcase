@@ -239,7 +239,7 @@ const TrialShowcase = () => {
     },
     {
       id: 2,
-      title: "两月目标与学习",
+      title: "两个月的目标与学习",
       content: [
         {
           id: 7,

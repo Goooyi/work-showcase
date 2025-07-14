@@ -4,7 +4,7 @@ export const BUILD_ID =
   process.env.NEXT_PUBLIC_BUILD_ID ||
   Date.now().toString();
 
-export const DATA_VERSION = "1.0.2";
+export const DATA_VERSION = "1.0.3";
 
 // Storage keys
 export const STORAGE_KEYS = {
