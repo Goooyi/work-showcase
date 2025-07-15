@@ -145,17 +145,13 @@ const TrialShowcase = () => {
       content: [
         {
           id: 1,
-          title: "👋",
-          description: `LLM算法工程师
+          title: "👋 LLM算法工程师",
+          description: `
             - 相信实现AI原生需要持续的工程迭代
 
             - Agent需要1. Eval-Driven 2. Data-Driven
 
-            - 学习最新的AI技术
-              - RAG->ARAG
-              - Prompt->Context
-              - Inference-Time scaling
-              - A2A...
+            - 学习最新的AI技术 (RAG->ARAG,Prompt->Context,Inference-Time scaling,A2A...)
 
             - 和所有人一起探索如何发挥AI的所有潜能。`,
           image: "👨‍💻关于我",
@@ -324,7 +320,7 @@ const TrialShowcase = () => {
         },
         {
           id: 12,
-          title: "可迁移的Prompt架构: DSPy",
+          title: "可迁移的Prompt架构化: （DSPy）",
           description:
             "1. 结构化Prompt,兼容线上与算法开发 \n 2.提升Prompt模版在不同LLM之间的可迁移性 \n 3. Auto-prompting: 以数据归因的提示词自动优化 \n 4. structured Outputs",
           image: "🧠",
